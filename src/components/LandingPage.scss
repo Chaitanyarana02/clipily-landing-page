@@ -1,7 +1,10 @@
 $dark-bg-main: #2d4e63;
+$dark-bg-main-hover: #3f708f;
 $white: #fff;
 $primary-btn-bg: #42ce93;
+$primary-btn-bg-hover: #c6a6cf;
 $coral-orange: #ffa877;
+$coral-orange-hover: #f8ff74;
 $matte-black: #6c6c6c;
 $dark-matte-black: #5e2522;
 $light-matte-black: #6c6c6c;
@@ -14,6 +17,7 @@ $black: #000000;
 $blue: #304bd9;
 $contact-us-bg: #f4f8ff;
 $footer-color: #d9d9d9;
+$dots: #d3d3d3;
 
 * {
   box-sizing: border-box;
@@ -43,6 +47,11 @@ $footer-color: #d9d9d9;
     border-radius: 6px;
     color: $white;
     background-color: transparent;
+    transition: 0.4s all;
+    &:hover {
+      background-color: $white;
+      color: $dark-bg-main;
+    }
   }
   .primary-btn {
     padding: 20px;
@@ -53,6 +62,11 @@ $footer-color: #d9d9d9;
     border-radius: 6px;
     color: $white;
     background-color: $primary-btn-bg;
+    transition: 0.4s all;
+    &:hover {
+      background-color: $primary-btn-bg-hover;
+      border-color: $primary-btn-bg-hover;
+    }
     &.dark {
       background-color: $dark-bg-main;
       font-size: 17px;
@@ -60,6 +74,10 @@ $footer-color: #d9d9d9;
       line-height: 20px;
       padding: 20px 35px;
       letter-spacing: 0em;
+      transition: 0.4s all;
+      &:hover {
+        background-color: $dark-bg-main-hover;
+      }
     }
   }
   .coral-btn {
@@ -70,6 +88,10 @@ $footer-color: #d9d9d9;
     border: none;
     border-radius: 6px;
     @include button-styles($coral-orange, $dark-matte-black);
+    transition: 0.4s all;
+    &:hover {
+      background-color: $coral-orange-hover;
+    }
   }
   input[type="text"],
   textarea {
@@ -251,10 +273,14 @@ $footer-color: #d9d9d9;
       .heading-common {
         margin-bottom: 84px;
       }
+      .VueCarousel {
+        width: 100%;
+      }
       .box-container {
         color: $dark-bg-main;
         gap: 35px 43px;
         margin-bottom: 83px;
+
         .boxes {
           padding: 12px 20px 12px 12px;
           background-color: $white;

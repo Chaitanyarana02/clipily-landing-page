@@ -89,8 +89,43 @@
         </div>
         <div class="what-we-do">
           <p class="heading-common">What we do</p>
+          <div class="d-block d-sm-none">
+            <carousel
+              :per-page="1"
+              :pagination-enabled="true"
+              paginationColor="#d3d3d3"
+              paginationActiveColor="#ffa877"
+            >
+              <!-- Use v-for to loop through each slide -->
+              <slide
+                v-for="(slideBoxes, slideIndex) in slideData"
+                :key="slideIndex"
+              >
+                <!-- Loop through and render the boxes for each slide -->
+                <div
+                  class="box-container d-flex align-items-start flex-column mb-0"
+                >
+                  <div
+                    v-for="(box, boxIndex) in slideBoxes"
+                    :key="boxIndex"
+                    class="boxes d-flex align-items-start"
+                  >
+                    <img :src="require(`@/assets/${box.imageSrc}`)" alt="" />
+                    <div class="w-100">
+                      <p>{{ box.title }}</p>
+                      <p>
+                        <small class="vertical-middle">FROM </small>${{
+                          box.price
+                        }}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </slide>
+            </carousel>
+          </div>
           <div
-            class="box-container d-flex align-items-center justify-content-center flex-wrap"
+            class="box-container align-items-center justify-content-center flex-wrap d-none d-sm-flex"
           >
             <div class="boxes d-flex align-items-start">
               <img src="@/assets/what-we-do/Rectangle 15-7.png" alt="" />
@@ -157,7 +192,9 @@
             </div>
           </div>
           <div class="text-center">
-            <button class="primary-btn dark">See Full List of Services</button>
+            <button class="primary-btn dark mt-5 mt-sm-0">
+              See Full List of Services
+            </button>
           </div>
         </div>
         <div class="why-use">
@@ -328,10 +365,68 @@
 </template>
 
 <script>
+import { Carousel, Slide } from "vue-carousel";
 export default {
   name: "LandingPage",
+  components: {
+    Carousel,
+    Slide,
+  },
   props: {
     msg: String,
+  },
+  data() {
+    return {
+      slideData: [
+        [
+          {
+            imageSrc: "what-we-do/Rectangle 15.png",
+            title: "Brand Style Guides",
+            price: 0.99,
+          },
+          {
+            imageSrc: "what-we-do/Rectangle 15-8.png",
+            title: "Illustrations",
+            price: 0.99,
+          },
+          {
+            imageSrc: "what-we-do/Rectangle 15-6.png",
+            title: "Web Design",
+            price: 0.99,
+          },
+        ],
+        [
+          {
+            imageSrc: "what-we-do/Rectangle 15-3.png",
+            title: "Print Design",
+            price: 0.99,
+          },
+          {
+            imageSrc: "what-we-do/Rectangle 15-1.png",
+            title: "Social Media Graphics",
+            price: 0.99,
+          },
+          {
+            imageSrc: "what-we-do/Rectangle 15-5.png",
+            title: "Packaging & Labels",
+            price: 0.99,
+          },
+        ],
+        [
+          {
+            imageSrc: "what-we-do/Rectangle 15-4.png",
+            title: "Architecture & Landscape Design",
+            price: 0.99,
+          },
+          {
+            imageSrc: "what-we-do/Rectangle 15-2.png",
+            title: "Product & Character Design",
+            price: 0.99,
+          },
+          // Add more data objects as needed
+        ],
+      ],
+    };
   },
 };
 </script>
